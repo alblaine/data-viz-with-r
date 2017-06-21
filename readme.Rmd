@@ -5,8 +5,12 @@ date: "6/19/2017"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+
+```
+
+```{r echo=FALSE}
 library("magick")
 library("highcharter")
 library("leaflet")
@@ -82,7 +86,10 @@ p
 ## Deciding on the right package
 
 * Do you want your visualizations to be interactive or static?
+  * interactive: plotly, highcharter, ggviz
+  * static: ggplot2
 * Do you want to use R Markdown/knitr to publish your visualization?
+  * not ggvis (it)
 * Do you want to create a dashboard for multiple vizzes?
 * Are you creating your visualization for a commercial or government purpose?
 * Do you need to do something sophisticated with geospatial data?
