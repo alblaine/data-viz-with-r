@@ -2,7 +2,9 @@
 title: "Data Visualization with R"
 author: "Alison Blaine and Nushrat Khan"
 date: "6/19/2017"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
@@ -46,6 +48,13 @@ Source: Stephen Cass, ["The 2016 Top Programming Langauges"](http://spectrum.iee
 * leaflet
 * plotly
 
+## Core R functions for plotting
+
+You can create graphs in R without installing a package. However, there are benefits to creating your visualizations using an R package versus the core R plot functions, including: 
+
+* you can create more attractive visualizations
+* easier to create publication-quality graphs 
+* 
 ## ggplot2
 Source: 
 ![](charts/animation.gif)
@@ -90,4 +99,5 @@ p
 * Do you want to create a dashboard for multiple vizzes?
 * Are you creating your visualization for a commercial or government purpose?
 * Do you need to do something sophisticated with geospatial data?
+
 
