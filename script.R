@@ -48,3 +48,16 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ class, nrow = 2)
 
+# 10. Facet grids allow for an extra dimension of faceting. Run this code to see what facet_grid() does:
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+
+# 11. Now create a chart with the diamonds data set using ggplot2.
+# Get to know the dataset first using ?diamonds and head(diamonds) commands
+# Decide on aesthetic mappings and whether you want to facet your chart.
+# Type the code below:
+
+?diamonds
+head(diamonds)

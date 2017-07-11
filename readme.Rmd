@@ -5,8 +5,8 @@ date: "7/11/2017"
 output: html_document
 ---
 
-```{r setup, echo=FALSE, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message=FALSE, fig.height = 5, fig.width = 5)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, fig.height = 5, fig.width = 5)
 ```
 
 ```{r echo=FALSE}
@@ -94,10 +94,10 @@ hc
 ## leaflet
 
 ```{r}
-m <- leaflet() %>%
+m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZoom = 15, maxZoom = 15)) %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addMarkers(lng=-78.6697, lat=35.7876,
-    popup="You are here")
+    popup="Hello World!")
 m  # Print the map
 
 ```
@@ -251,3 +251,29 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ class, nrow = 2)
 ```
+
+## Exercise 10: facet_grid
+
+Facet grids allow for an extra dimension of faceting. Run this code in your script to see what facet_grid() does:
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+```
+
+## Apply what you have learned
+
+Now create a new scatter plot with the dataset `diamonds` using ggplot2. Refer to previous code examples for assistance.
+
+```{r}
+head(diamonds)
+```
+
+
+## Example: 
+
+```{r}
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=cut)) + facet_wrap(~cut, nrow=2)
+```
+
