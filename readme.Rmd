@@ -1,16 +1,16 @@
 ---
 title: "Data Visualization with R"
-author: "Alison Blaine and Nushrat Khan"
-date: "6/19/2017"
+author: "Alison Blaine, Nushrat Khan & Heidi Tebbe"
+date: "7/11/2017"
 output: html_document
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE)
-library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, fig.height = 5, fig.width = 5)
 ```
 
 ```{r echo=FALSE}
+library("ggplot2")
 library("magick")
 library("highcharter")
 library("leaflet")
@@ -146,24 +146,25 @@ facet (optional)
 
 ## Open script.R file
 
+Download the following file: **[script.R](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU)**
+Click the blue download button  
 Open RStudio. 
-Download the following file: [script.R](www.needlink.here)
 File > Open File...   
-Select the **script.R** file that you just downloaded  
+Select the **script.R** file that you just downloaded  (probably in your Downloads folder)
 Click Open  
 
 ## Get to know the data
 Let's see an example of a simple graph created with ggplot. We are going to use the **mpg** data set about different cars and their properties. 
 
-Exercise #1: In your script file, run **?mpg** to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
+#### Exercise #1: In your script file, run **?mpg** to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
 
-Exercise #2: Run **head(mpg)** to see the first few rows of the data.
+#### Exercise #2: Run **head(mpg)** to see the first few rows of the data.
 
 ```{r}
 head(mpg)
 ```
 
-##Exercise #3: ggplot syntax
+## Exercise #3: ggplot syntax
 
 The graph below uses ggplot2 to look for correlation between a car's engine displacement and highway mileage.
 
