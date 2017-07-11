@@ -2,7 +2,9 @@
 title: "Data Visualization with R"
 author: "Alison Blaine, Nushrat Khan & Heidi Tebbe"
 date: "7/11/2017"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
