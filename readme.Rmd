@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, fig.height = 5, fig.width = 5)
+knitr::opts_chunk$set(echo = TRUE, error=FALSE, message=FALSE, fig.height = 5, fig.width = 5)
 ```
 
 ```{r echo=FALSE}
@@ -80,7 +80,7 @@ Source:
   
 ## highcharter
 
-```{r}
+```{r eval= FALSE}
 data(citytemp)
 
 hc <- highchart() %>% 
@@ -95,7 +95,7 @@ hc
   
 ## leaflet
 
-```{r}
+```{r eval=FALSE}
 m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZoom = 15, maxZoom = 15)) %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addMarkers(lng=-78.6697, lat=35.7876,
@@ -106,7 +106,7 @@ m  # Print the map
   
 ## plotly
 
-```{r}
+```{r eval=FALSE}
 p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
 p
 ```
