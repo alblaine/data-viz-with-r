@@ -14,6 +14,12 @@ Alison Blaine, Nushrat Khan & Heidi Tebbe
 * learn basic design principles for effective communication
 * gain hands-on practice making different visualization types
 
+## What you will need
+
+* [installation of R (version 3.3.2 or newer)](http://archive.linux.duke.edu/cran/)
+* [RStudio](https://www.rstudio.com/products/rstudio/download/) - select the free version
+* [this script](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU) -download it and open in RStudio
+
 ## What is R?
 
 R is a software environment for statistical computing and graphics. Using R you can do rigorous statistical analysis, clean and manipulate data, and create publication-quality graphics.
@@ -68,7 +74,7 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 [Source: r-statistics.co](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 ## highcharter
-highcharter is an R package known as an htmlwidget, which allows you to use popular Javascript packages for visualization in R. Free unless you are using it for a commercial or government purpose.
+Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
 
 
 ```r
@@ -88,6 +94,7 @@ hc
   
 ## leaflet
 
+Leaflet is popular among web developers for creating interactive web maps. It's an htmlwidget for R based on LeafletJS.
 
 ```r
 m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZoom = 15, maxZoom = 15)) %>%
@@ -101,6 +108,7 @@ m  # Print the map
 
 ## plotly
 
+Plotly is somewhat new and is making inroads among data scientists for making interactive visualizations. 
 
 ```r
 p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
@@ -120,7 +128,7 @@ p
 * 2D vizzes: **ggplot2** 
 * 3D vizzes: **rgl** 
 * maps: **leaflet**
-* interactive: **ggvis, rbokeh, plotly, or highcharter**
+* interactive: **rbokeh, plotly, or highcharter**
 * network graphs: **diagrammeR, visNetwork**
 * web applications: **shiny**
 
