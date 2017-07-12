@@ -45,10 +45,11 @@ Resources include:
 
 * ggplot2
 * ggvis
-* htmlwidgets:
+* htmlwidgets (for interactive web visualizations):
   * highcharter
   * leaflet
   * plotly
+* shiny
 
 ## Core R functions for plotting
 
@@ -62,10 +63,12 @@ You can create graphs in R without installing a package, but packages will allow
 
 ggplot2 is the most popular visualization package for R. It's the best all-purpose package for creating many types of 2-dimensional visualizations. 
 
-Source: 
 ![](charts/animation.gif)
-  
+
+[Source: r-statistics.co](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
 ## highcharter
+highcharter is an R package known as an htmlwidget, which allows you to use popular Javascript packages for visualization in R. Free unless you are using it for a commercial or government purpose.
 
 
 ```r
@@ -80,6 +83,8 @@ hc <- highchart() %>%
 
 hc
 ```
+
+![](images/highcharts.png)
   
 ## leaflet
 
@@ -92,6 +97,8 @@ m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZo
 m  # Print the map
 ```
   
+![](images/leaflet.png)
+
 ## plotly
 
 
@@ -99,13 +106,14 @@ m  # Print the map
 p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
 p
 ```
-  
+![](images/plotly.png)
+
 ## Deciding on the right package
 
-* Do you want your visualizations to be interactive or static?
-* Do you want to create a dashboard?
-* Are you creating your visualization for a commercial or government purpose?
-* Do you need to do something sophisticated with geospatial data?
+* static or interactive
+* single viz or dashboard
+* the nature of the data: geospatial? quantitative? qualitative? 
+* purpose and licensing
 
 #### Recommended packages
 
