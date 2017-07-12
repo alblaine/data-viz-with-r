@@ -55,6 +55,7 @@ Resources include:
   * highcharter
   * leaflet
   * plotly
+  * rbokeh
 * shiny
 
 ## Core R functions for plotting
@@ -150,7 +151,7 @@ plus the following:
 * coordinate system  
 * facet (optional)
 
-*These components make up a graph.*
+**These components make up a graph.**
 
 ## Open script.R file
 
@@ -277,7 +278,7 @@ ggplot(data = mpg) +
 
 ![](readme_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
-## Exercise #9: Practice Faceting. 
+## Exercise #9: Practice Faceting 
 
 **Substitute `class` for another variable in the dataset. Ex: `trans`, `drive`, or `cyl`**
 
@@ -330,9 +331,9 @@ ggplot(data = diamonds) +
 
 ![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
-## Adding multiple layers to a graph
+## Exercise 12: Adding multiple layers to a graph
 
-So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`. Notice that the `color` variable is only applied to the scatter poitns, and not the line. 
+So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`. Notice that the `color` variable is only applied to the scatter points, and not the line. 
 
 
 ```r
@@ -342,3 +343,65 @@ ggplot(data = diamonds) +
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+## Exercise 13: Coding for efficiency 
+To reduce typing, put the aesthetics that are shared by all layers (global) in the ggplot() function. Put unique aesthetics in the geom() functions that are specific to that (local) layer only. Run this code to see what happens:
+
+
+```r
+ggplot(data = diamonds, mapping = aes(x = carat, y = price)) + 
+  geom_point(aes(color=cut)) +
+  geom_smooth()
+```
+
+![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+
+## Exercise 14: Practice putting aesthetics in ggplot() function
+Now use the short hand method to make the following code more efficient. Type your answer in the script:
+
+
+```r
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=clarity)) +
+  geom_smooth(mapping = aes(x = carat, y = price))
+```
+
+![](readme_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+
+## Solution to #14
+
+
+```r
+ggplot(data = diamonds, mapping = aes(x=carat, y=price)) + 
+  geom_point(aes(color=clarity)) +
+  geom_smooth()
+```
+
+It's also possible to write it even more efficiently:
+
+```r
+ggplot(diamonds, aes(carat, price)) + geom_point(aes(color=clarity)) + geom_smooth()
+```
+
+## Exercise 15: Position adjustments
+
+The previous chart has some issues with data points overlapping, and also too many spaghetti lines. We can use `alpha`, which is an aesthetic, and `position` to help reduce some of that overlap. Remember that `position` is one of the elements in the layered grammar of graphics. 
+
+`alpha` - use to make points more transparent so you can see points underneath
+`position`: takes values `identity`, `dodge`, `fill`, or `jitter`
+
+
+```r
+ggplot(data =diamonds, mapping = aes(carat, price)) + geom_point(mapping = aes(color=clarity, alpha=1/5), position="jitter") + geom_smooth()
+```
+
+![](readme_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+
+## Other chart types in ggplot2
+To make a scatter plot, we used the `geom_point()` function. You can use different `geom` functions to make other chart types. Here are just a few examples of the many `geom` functions: 
+
+* `geom_abline()`
+* `geom_bar()`
+* `geom_boxplot()`
+* `geom_density()`
+
+

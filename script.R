@@ -63,4 +63,31 @@ ggplot(data = mpg) +
 head(diamonds)
 
 
-# 12.
+# 12. Adding multiple layers to a graph. Run this code:
+
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=cut)) +
+  geom_smooth(mapping = aes(x = carat, y = price))
+
+
+# 13. What is the difference between # 12 and this code? Run it to see:
+
+ggplot(data = diamonds, mapping = aes(x = carat, y = price)) + 
+  geom_point(aes(color=cut)) +
+  geom_smooth()
+
+
+# 14. Now use the shorthand method to make the following code more efficient: 
+
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=clarity)) +
+  geom_smooth(mapping = aes(x = carat, y = price))
+
+# Type the shorthand version here:
+
+
+
+# 15. Position adjustments. Run the following code to see the effect of alpha = 1/5 and position = "jitter"
+ggplot(data =diamonds, mapping = aes(carat, price)) + 
+  geom_point(mapping = aes(color=clarity, alpha=1/5), position="jitter") +
+  geom_smooth()
