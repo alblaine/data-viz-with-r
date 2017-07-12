@@ -52,12 +52,15 @@ ggplot(data = mpg) +
 
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
-  facet_grid(drv ~ cyl)
+  facet_grid(class ~ cyl)
 
-# 11. Now create a chart with the diamonds data set using ggplot2.
+# 11. Apply what you have learned! Create a chart with the diamonds data set using ggplot2.
 # Get to know the dataset first using ?diamonds and head(diamonds) commands
 # Decide on aesthetic mappings and whether you want to facet your chart.
 # Type the code below:
 
 ?diamonds
 head(diamonds)
+
+
+# 12.

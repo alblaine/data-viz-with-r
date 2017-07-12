@@ -137,9 +137,10 @@ at least one layer:
    + geometric object (geom) -- point, line, bar, etc
    + position adjustment
 
-scale   
-coordinate system  
-facet (optional)
+plus the following:
+* scale   
+* coordinate system  
+* facet (optional)
 
 *These components make up a graph.*
 
@@ -153,9 +154,14 @@ Select the **script.R** file that you just downloaded  (probably in your Downloa
 Click Open  
 
 ## Get to know the data
-Let's see an example of a simple graph created with ggplot. We are going to use the **mpg** data set about different cars and their properties. 
+Let's see an example of a simple graph created with ggplot. We are going to use the `mpg` data set about different cars and their properties. 
 
-#### Exercise #1: In your script file, run **?mpg** to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
+#### Exercise #1: In your script file, run `?mpg` to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
+
+
+```r
+?mpg 
+```
 
 #### Exercise #2: Run **head(mpg)** to see the first few rows of the data.
 
@@ -198,13 +204,13 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 
 ## Exercise #4: Practice
 Make a scatterplot with `cyl` mapped to the x-axis and `hwy` mapped to the y-axis.
 
-![](readme_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 ## Solution to #4
 
@@ -221,10 +227,10 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ## Exercise #6: Make the same scatterplot as the previous example, but map drv to color.
-![](readme_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 ## Solution to #6
 The type of drive system the car has (4-wheel, rear-wheel, and front-wheel) is mapped to color.
@@ -260,7 +266,7 @@ ggplot(data = mpg) +
   facet_wrap(~ class, nrow = 2)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 ## Exercise #9: Practice Faceting. 
 
@@ -282,7 +288,7 @@ ggplot(data = mpg) +
   facet_grid(drv ~ cyl)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 ## Apply what you have learned
 
@@ -314,5 +320,5 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color=cut)) + facet_wrap(~cut, nrow=2)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 

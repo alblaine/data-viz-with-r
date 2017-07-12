@@ -146,11 +146,12 @@ at least one layer:
    + data & aesthetic mapping of the data to variables
    + a statistical transformation
    + geometric object (geom) -- point, line, bar, etc
-   + position adjustment
+   + position adjustment - stacking, jitter, etc.
 
-scale   
-coordinate system  
-facet (optional)
+plus the following:
+* scale   
+* coordinate system  
+* facet (optional)
 
 *These components make up a graph.*
 
@@ -164,11 +165,15 @@ Select the **script.R** file that you just downloaded  (probably in your Downloa
 Click Open  
 
 ## Get to know the data
-Let's see an example of a simple graph created with ggplot. We are going to use the **mpg** data set about different cars and their properties. 
+Let's see an example of a simple graph created with ggplot. We are going to use the `mpg` data set about different cars and their properties. 
 
-#### Exercise #1: In your script file, run **?mpg** to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
+#### Exercise #1: In your script file, run `?mpg` to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
 
-#### Exercise #2: Run **head(mpg)** to see the first few rows of the data.
+```{r}
+?mpg 
+```
+
+#### Exercise #2: Run `head(mpg)` to see the first few rows of the data.
 
 ```{r}
 head(mpg)
@@ -188,7 +193,8 @@ The graph below uses ggplot2 to look for correlation between a car's engine disp
 
 * `mapping = aes()`: function that allows you to map data variables to X and Y axes
 
-**Run the following code in your script file:**
+#### Run the following code in your script file
+
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
@@ -266,12 +272,11 @@ ggplot(data = mpg) +
 
 Facet grids allow for an extra dimension of faceting. Run this code in your script to see what facet_grid() does:
 ```{r}
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy)) + 
-  facet_grid(drv ~ cyl)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(class ~ cyl)
 ```
 
-## Apply what you have learned
+## Exercise 11: Apply what you've learned!
 
 Now create a new scatter plot with the dataset `diamonds` using ggplot2. Refer to previous code examples for assistance.
 
@@ -287,3 +292,14 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color=cut)) + facet_wrap(~cut, nrow=2)
 ```
 
+## Adding multiple layers to a graph
+
+So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`. Notice that the `color` variable is only applied to the scatter poitns, and not the line. 
+
+```{r}
+
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=cut)) +
+  geom_smooth(mapping = aes(x = carat, y = price))
+
+```
