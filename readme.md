@@ -135,7 +135,7 @@ at least one layer:
    + data & aesthetic mapping of the data to variables
    + a statistical transformation
    + geometric object (geom) -- point, line, bar, etc
-   + position adjustment
+   + position adjustment - stacking, jitter, etc.
 
 plus the following:
 * scale   
@@ -163,7 +163,7 @@ Let's see an example of a simple graph created with ggplot. We are going to use 
 ?mpg 
 ```
 
-#### Exercise #2: Run **head(mpg)** to see the first few rows of the data.
+#### Exercise #2: Run `head(mpg)` to see the first few rows of the data.
 
 
 ```r
@@ -197,7 +197,8 @@ The graph below uses ggplot2 to look for correlation between a car's engine disp
 
 * `mapping = aes()`: function that allows you to map data variables to X and Y axes
 
-**Run the following code in your script file:**
+#### Run the following code in your script file
+
 
 ```r
 ggplot(data = mpg) + 
@@ -283,14 +284,13 @@ ggplot(data = mpg) +
 Facet grids allow for an extra dimension of faceting. Run this code in your script to see what facet_grid() does:
 
 ```r
-ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy)) + 
-  facet_grid(drv ~ cyl)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(class ~ cyl)
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
-## Apply what you have learned
+## Exercise 11: Apply what you've learned!
 
 Now create a new scatter plot with the dataset `diamonds` using ggplot2. Refer to previous code examples for assistance.
 
@@ -322,3 +322,15 @@ ggplot(data = diamonds) +
 
 ![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
+## Adding multiple layers to a graph
+
+So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`. Notice that the `color` variable is only applied to the scatter poitns, and not the line. 
+
+
+```r
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price, color=cut)) +
+  geom_smooth(mapping = aes(x = carat, y = price))
+```
+
+![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
