@@ -392,5 +392,19 @@ ggplot(data = diamonds) +
 
 ```
 
+## Statistical transformations
+
+`stat` is another part of the grammar of graphics: essentially, a statistical tranformation of the data. Each layer has one.   
+
+`geom` functions each have their own default `stat`, or statistical transformation, measures, that transform the data. 
+* `geom_bar` has a default `stat` called `count`
+* `geom_histogram` has `bin`
+...and so on
+
+It's possible to change these default settings, but normally, you don't need to. Notice that we didn't have to set `stat` to a value in order to create a bar chart.  
+
+To find out how to do this, type ?+package name in the console. Example `?geom_bar()`
+
+
 ## Creating charts for communication
 
