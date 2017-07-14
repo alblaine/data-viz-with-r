@@ -91,3 +91,13 @@ ggplot(data = diamonds) +
 ggplot(data =diamonds, mapping = aes(carat, price)) + 
   geom_point(mapping = aes(color=clarity, alpha=1/5), position="jitter") +
   geom_smooth()
+
+# 16. Bar chart example. Run this example in the code to create a bar chart:
+
+ggplot(data = demo) +
+  geom_bar(mapping = aes(x = cut))
+
+
+# 17. Now create a bar chart with x = clarity. 
+
+

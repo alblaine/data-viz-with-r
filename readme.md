@@ -333,7 +333,7 @@ ggplot(data = diamonds) +
 
 ## Exercise 12: Adding multiple layers to a graph
 
-So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`. Notice that the `color` variable is only applied to the scatter points, and not the line. 
+So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`, which fits a model to the data. Notice that the `color` variable is only applied to the scatter points, and not the line. 
 
 
 ```r
@@ -404,4 +404,36 @@ To make a scatter plot, we used the `geom_point()` function. You can use differe
 * `geom_boxplot()`
 * `geom_density()`
 
+Each function can take certain parameters. To learn more about a function, you can type `?+name of function`, for example, `?geom_bar`
+
+## Bar Chart Example
+
+Use geom_bar() function to create a bar chart. Without a specified y variable, bar charts in ggplot calculate `count`, a new value.
+`count` is a statistical tranformation of your data that ggplot2 automatically does. 
+
+#### Exercise 16. Run this example of a bar chart: 
+
+```r
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+```
+
+![](readme_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
+
+## Exercise 17: Bar Chart Practice
+
+Create a bar chart where x=clarity.
+
+
+## Solution to #17
+
+
+```r
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = clarity))
+```
+
+![](readme_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
+
+## Creating charts for communication
 
