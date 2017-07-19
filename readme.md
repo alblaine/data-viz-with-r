@@ -263,7 +263,7 @@ Variables can be mapped to the following aesthetic parameters. If you are publis
 
 ```r
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = drv))
+  geom_point(mapping = aes(x = displ, y = hwy, shape = drv))
 ```
 
 ## Exercise #8: Faceting
@@ -299,6 +299,15 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) +
 
 ![](readme_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
+Compare above result with the code below. What do the empty cells in the above graph mean?
+
+```r
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = cyl))
+```
+
+![](readme_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+
 ## Exercise 11: Apply what you've learned!
 
 Now create a new scatter plot with the dataset `diamonds` using ggplot2. Refer to previous code examples for assistance.
@@ -329,7 +338,7 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color=cut)) + facet_wrap(~cut, nrow=2)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 ## Exercise 12: Adding multiple layers to a graph
 
@@ -342,7 +351,7 @@ ggplot(data = diamonds) +
   geom_smooth(mapping = aes(x = carat, y = price))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 ## Exercise 13: Coding for efficiency 
 To reduce typing, put the aesthetics that are shared by all layers (global) in the ggplot() function. Put unique aesthetics in the geom() functions that are specific to that (local) layer only. Run this code to see what happens:
 
@@ -353,7 +362,7 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price)) +
   geom_smooth()
 ```
 
-![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
 ## Exercise 14: Practice putting aesthetics in ggplot() function
 Now use the short hand method to make the following code more efficient. Type your answer in the script:
@@ -365,7 +374,7 @@ ggplot(data = diamonds) +
   geom_smooth(mapping = aes(x = carat, y = price))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 ## Solution to #14
 
@@ -394,7 +403,7 @@ The previous chart has some issues with data points overlapping, and also too ma
 ggplot(data =diamonds, mapping = aes(carat, price)) + geom_point(mapping = aes(color=clarity, alpha=1/5), position="jitter") + geom_smooth()
 ```
 
-![](readme_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 ## Other chart types in ggplot2
 To make a scatter plot, we used the `geom_point()` function. You can use different `geom` functions to make other chart types. Here are just a few examples of the many `geom` functions: 
@@ -418,7 +427,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
 ## Exercise 17: Bar Chart Practice
 
@@ -433,7 +442,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = clarity))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
 
 ## Statistical transformations
 
@@ -449,6 +458,44 @@ It's possible to change these default settings, but normally, you don't need to.
 To find out how to do this, type ?+package name in the console. Example `?geom_bar()`
 
 
-
 ## Creating charts for communication
 
+Once you're ready to publish your graph, you should add information that helps communicate the content with your audience.`labs()` function allows you to add labels so that you can turn it into expository graphic.
+
+## Exercise 18: Adding labels: title, subtitle, caption
+
+
+```r
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  labs(
+    title = "Fuel efficiency generally decreases with engine size",
+    subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+    caption = "Data from fueleconomy.gov"
+  )
+```
+
+![](readme_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+
+## You can also use labs() to replace the axis and legend titles. 
+## Exercise 19: In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
+
+![](readme_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+
+## Solution to 19
+
+
+```r
+ggplot(mpg, aes(displ, hwy)) +
+     geom_point(aes(color = class)) +
+     geom_smooth(se = FALSE) +
+     labs(
+         title = "Fuel efficiency generally decreases with engine size",
+         subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+         caption = "Data from fueleconomy.gov",
+         x = "Engine displacement (L)",
+         y = "Highway fuel economy (mpg)",
+         colour = "Car type"
+     )
+```

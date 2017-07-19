@@ -1,6 +1,6 @@
-# run these two lines first to install and load the ggplot2 package:
-install.packages("ggplot2")
-library(ggplot2)
+# run these two lines first to install and load the tidyverse package:
+install.packages("tidyverse")
+library(tidyverse)
  
 # 1. Learn more about the mpg dataset. Run the following code:
 
@@ -12,7 +12,7 @@ head(mpg)
 
 # 3. Create a scatterplot with ggplot2, plotting engine displacement on the X-axis 
 # and highway mileage on the Y-axis. Run:
-
+## Make sure to put the "+" sign at the end of the line, not at beginning of next line
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 
@@ -33,7 +33,7 @@ ggplot(data = mpg) +
 #Run the code:
 
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = drv))
+  geom_point(mapping = aes(x = displ, y = hwy, shape = drv))
 
 # 8. Facet_wrap() creates subplots. Run this code to see what faceting does:
 
@@ -53,6 +53,10 @@ ggplot(data = mpg) +
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_grid(class ~ cyl)
+
+# Compare above result with the code below. What do the empty cells in the above graph mean?
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = cyl))
 
 # 11. Apply what you have learned! Create a chart with the diamonds data set using ggplot2.
 # Get to know the dataset first using ?diamonds and head(diamonds) commands
@@ -94,10 +98,21 @@ ggplot(data =diamonds, mapping = aes(carat, price)) +
 
 # 16. Bar chart example. Run this example in the code to create a bar chart:
 
-ggplot(data = demo) +
+ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 
 
 # 17. Now create a bar chart with x = clarity. 
 
+# 18. Add labels to inform your audience about the graph 
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  labs(
+    title = "Fuel efficiency generally decreases with engine size",
+    subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+    caption = "Data from fueleconomy.gov"
+  )
+
+## Exercise 19: In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
 
