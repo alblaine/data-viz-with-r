@@ -21,9 +21,8 @@ library("plotly")
 
 * learn about various packages for making data visualizations in R 
 * be able to determine which package to use 
-* understand basic syntax for the popular packages
-* learn basic design principles for effective communication
-* gain hands-on practice making different visualization types
+* understand basic syntax for the most popular package: ggplot2
+* gain hands-on practice making visualizations in ggplot2
 
 ## What you will need
 
@@ -60,14 +59,16 @@ Resources include:
 
 ## Popular R packages for data viz 
 
-1. ggplot2
-2. ggvis
-3. htmlwidgets (for interactive web visualizations):
-  1. highcharter
-  2. leaflet
-  3. plotly
-  4. rbokeh
-  5. shiny
+* ggplot2
+* ggvis
+
+htmlwidgets:
+
+* highcharter
+* leaflet
+* plotly
+* rbokeh 
+* shiny
 
 ## Core R functions for plotting
 
@@ -86,6 +87,7 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 [Source: r-statistics.co](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
 ## highcharter
+
 Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
 ```{r}
 data(citytemp)
@@ -135,7 +137,7 @@ p
 * 2D vizzes: **ggplot2** 
 * 3D vizzes: **rgl** 
 * maps: **leaflet**
-* interactive: **rbokeh, plotly, or highcharter**
+* interactive: **ggvis, rbokeh, plotly, or highcharter**
 * network graphs: **diagrammeR, visNetwork**
 * web applications: **shiny**
 
@@ -147,22 +149,40 @@ Essentially: graphs are like sentences you can construct, and they have a gramma
 
 ## The Grammar of Graphics
 
-The grammar of graphics consists of the following: 
+According to the grammar of graphics, every chart should have at least one layer that contains the following:
 
-at least one layer: 
-
-   + data & aesthetic mapping of the data to variables
-   + a statistical transformation
-   + geometric object (geom) -- point, line, bar, etc
-   + position adjustment - stacking, jitter, etc.
+* **data** & **aesthetic mapping** of the data to variables
+* **stat** - a statistical transformation of the data -- sum, mean, etc.
+* **geom** - geometric object (geom) -- point, line, bar, etc
+* **position adjustment** - stacking, jitter, etc.
 
 plus the following:
 
-* scale   
-* coordinate system  
-* facet (optional)
+* **scale**   
+* **coordinate system** 
+* **facet** (optional)
 
 **These components make up a graph.**
+
+## Tidy Data
+
+**Tidy data** is a way of structuring a data set to make it easier to work, proposed by Hadley Wickham (2014). 
+
+Tidy data has the following characteristics: "each variable is a column, each observation is a row, and each type of observational unit is a table."
+
+
+## The Tidyverse
+
+The tidyverse is a set of packages for working with data that include packages for cleaning, manipulating, and visualizing data in R. We will be using the tidyverse package in our workshop activity. See the [tidyverse website](http://tidyverse.org/) For more information about tidyverse package.
+
+![](images/tidyverse-logo.png)
+
+## Saving charts in ggplot2: ggsave()
+
+**ggsave()** is a function within ggplot2 to save your graphs as files to your computer.
+
+Using ggsave, you can save charts to the following file formats:   
+eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg or wmf (windows only)
 
 ## Open script.R file
 
@@ -193,13 +213,9 @@ head(mpg)
 The graph below uses ggplot2 to look for correlation between a car's engine displacement and highway mileage.
 
 * `library(ggplot2)`: loads the ggplot2 library
-
 * `ggplot()` : function that tells R that you want to make a graph with ggplot
-
 * `data = mpg` : says that you want to use the mpg dataset (sample data that comes with R)
-
 * `geom_point()`: function that says you want to make a scatterplot
-
 * `mapping = aes()`: function that allows you to map data variables to X and Y axes
 
 #### Run the following code in your script file
