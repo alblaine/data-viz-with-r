@@ -2,9 +2,7 @@
 title: "Data Visualization with R"
 author: "Alison Blaine, Nushrat Khan & Heidi Tebbe"
 date: "7/11/2017"
-output: 
-  html_document:
-    keep_md: true
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -62,11 +60,11 @@ Resources include:
 * ggplot2
 * ggvis
 * htmlwidgets (for interactive web visualizations):
-  * highcharter
-  * leaflet
-  * plotly
-  * rbokeh
-* shiny
+   * highcharter
+   * leaflet
+   * plotly
+   * rbokeh
+   * shiny
 
 ## Core R functions for plotting
 
@@ -86,7 +84,6 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 
 ## highcharter
 Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
-
 ```{r eval= FALSE}
 data(citytemp)
 
@@ -113,7 +110,6 @@ m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZo
 m  # Print the map
 
 ```
-  
 ![](images/leaflet.png)
 
 ## plotly
@@ -132,7 +128,7 @@ p
 * the nature of the data: geospatial? quantitative? qualitative? 
 * purpose and licensing
 
-#### Recommended packages
+## Recommended packages
 
 * 2D vizzes: **ggplot2** 
 * 3D vizzes: **rgl** 
@@ -155,6 +151,7 @@ at least one layer:
    + position adjustment - stacking, jitter, etc.
 
 plus the following:
+
 * scale   
 * coordinate system  
 * facet (optional)
