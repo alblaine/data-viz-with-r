@@ -11,6 +11,9 @@ knitr::opts_chunk$set(echo = TRUE, error=FALSE, message=FALSE, fig.height = 5, f
 
 ```{r echo=FALSE}
 library("ggplot2")
+library("highcharter")
+library("leaflet")
+library("plotly")
 
 ```
 
@@ -44,9 +47,9 @@ Source: Stephen Cass, ["The 2016 Top Programming Langauges"](http://spectrum.iee
 
 ## R packages 
 
-Packages are programs that you import into R to help make tasks easier. The most popular R packages for working with data include *dplyr, stringr, tidyr, and ggplot2*. 
+Packages are programs that you import into R to help make tasks easier. The most popular R packages for working with data include the following: *dplyr, stringr, tidyr, and ggplot2*. 
 
-## How to find a package
+**How to find a package:**
 
 There's no easy way (yet) for new R users to find R packages that they might need. People are working on this problem. In the meantime, consult the following list or ask a Librarian!
 
@@ -57,14 +60,14 @@ Resources include:
 
 ## Popular R packages for data viz 
 
-* ggplot2
-* ggvis
-* htmlwidgets (for interactive web visualizations):
-   * highcharter
-   * leaflet
-   * plotly
-   * rbokeh
-   * shiny
+1. ggplot2
+2. ggvis
+3. htmlwidgets (for interactive web visualizations):
+  1. highcharter
+  2. leaflet
+  3. plotly
+  4. rbokeh
+  5. shiny
 
 ## Core R functions for plotting
 
@@ -84,7 +87,7 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 
 ## highcharter
 Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
-```{r eval= FALSE}
+```{r}
 data(citytemp)
 
 hc <- highchart() %>% 
@@ -97,12 +100,11 @@ hc <- highchart() %>%
 hc
 ```
 
-![](images/highcharts.png)
   
 ## leaflet
 
 Leaflet is popular among web developers for creating interactive web maps. It's an htmlwidget for R based on LeafletJS.
-```{r eval=FALSE}
+```{r}
 m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZoom = 15, maxZoom = 15)) %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
   addMarkers(lng=-78.6697, lat=35.7876,
@@ -110,16 +112,16 @@ m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZo
 m  # Print the map
 
 ```
-![](images/leaflet.png)
+
 
 ## plotly
 
 Plotly is somewhat new and is making inroads among data scientists for making interactive visualizations. 
-```{r eval=FALSE}
+```{r}
 p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
 p
 ```
-![](images/plotly.png)
+
 
 ## Deciding on the right package
 
@@ -137,11 +139,15 @@ p
 * network graphs: **diagrammeR, visNetwork**
 * web applications: **shiny**
 
-## ggplot2: the most important package to learn first
+## ggplot2: the (often) most important package to learn first
 
 **ggplot2** was created on the principles of the **Layered Grammar of Graphics** (2010), by Hadley Wickham and based of off work from Wilkinson, Anand, & Grossman (2005) and Jaques Bertin (1983). 
 
-Essentially: graphs are like sentences you can construct, and they have a grammar. The grammar of graphics consists of the following: 
+Essentially: graphs are like sentences you can construct, and they have a grammar. 
+
+## The Grammar of Graphics
+
+The grammar of graphics consists of the following: 
 
 at least one layer: 
 
