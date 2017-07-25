@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, error=FALSE, message=FALSE, fig.height = 5, f
 library("tidyverse")
 library("leaflet")
 library("plotly")
+library("rbokeh")
 ```
 
 ## Workshop goals 
@@ -49,7 +50,7 @@ Source: Stephen Cass, ["The 2016 Top Programming Langauges"](http://spectrum.iee
 
 Packages are programs that you import into R to help make tasks easier. The most popular R packages for working with data include *dplyr, stringr, tidyr, and ggplot2*. 
 
-## How to find a package
+**How to find a package**
 
 There's no easy way (yet) for new R users to find R packages that they might need. People are working on this problem. In the meantime, consult the following list or ask a Librarian!
 
@@ -78,6 +79,16 @@ You can create graphs in R without installing a package, but packages will allow
 * attractive
 * publication-quality
 * interactive
+
+Example using the base R plot() function to create a scatterplot: 
+
+``` {r}
+
+attach(mtcars)
+plot(wt, mpg, main="Scatterplot Example", 
+  	xlab="Car Weight ", ylab="Miles Per Gallon ", pch=19)
+
+```
 
 ## ggplot2
 
@@ -130,16 +141,21 @@ p
 
 rbokeh allows you to create elegant-looking interactive graphs
 
+```{r eval=FALSE}
 
+h <- figure(width = 600, height = 400) %>%
+  ly_hist(eruptions, data = faithful, breaks = 40, freq = FALSE) %>%
+  ly_density(eruptions, data = faithful)
+h
+```
+
+![](images/bokeh_plot.png)
 
 ## shiny
 
 shiny is a popular R package for creating web applications. 
 
-
-
-## flexdashboard 
-
+![](images/shiny.png)
 
 ## Deciding on the right package
 
@@ -154,7 +170,7 @@ shiny is a popular R package for creating web applications.
 * 3D vizzes: **rgl** 
 * maps: **leaflet**
 * interactive: **ggvis, rbokeh, plotly, or highcharter**
-* network graphs: **diagrammeR, visNetwork**
+* network graphs: **ggnet, diagrammeR, visNetwork**
 * web applications: **shiny**
 
 ## ggplot2: the most important package to learn first
