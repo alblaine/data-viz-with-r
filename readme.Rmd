@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE, error=FALSE, message=FALSE, fig.height = 5, f
 
 ```{r echo=FALSE}
 library("tidyverse")
-library("magick")
 library("leaflet")
 library("plotly")
 ```
@@ -90,7 +89,7 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 
 ## highcharter
 Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
-```{r eval= FALSE}
+```{r fig.height = 4, fig.width = 4, eval= FALSE}
 data(citytemp)
 
 hc <- highchart() %>% 
@@ -126,6 +125,21 @@ p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
 p
 ```
 ![](images/plotly.png)
+
+## rbokeh
+
+rbokeh allows you to create elegant-looking interactive graphs
+
+
+
+## shiny
+
+shiny is a popular R package for creating web applications. 
+
+
+
+## flexdashboard 
+
 
 ## Deciding on the right package
 
@@ -392,7 +406,7 @@ ggplot(data =diamonds, mapping = aes(carat, price)) + geom_point(mapping = aes(c
 ```
 
 ## Other chart types in ggplot2
-To make a scatter plot, we used the `geom_point()` function. You can use different `geom` functions to make other chart types. Here are just a few examples of the many `geom` functions: 
+To make a scatter plot, we used the `geom_point()` function. You can use different `geom` functions to make other chart types. Here are just a few examples of the many `geom` functions:
 
 * `geom_abline()`
 * `geom_bar()`
@@ -415,8 +429,15 @@ ggplot(data = diamonds) +
 
 ## Exercise 17: Bar Chart Practice
 
-Create a bar chart where x=clarity.
+Create a bar chart where **x = clarity**.
 
+Modify this code from the previous example: 
+
+```{r eval=FALSE}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+
+```
 
 ## Solution to #17
 
@@ -458,6 +479,7 @@ ggplot(mpg, aes(displ, hwy)) +
 ```
 
 ## You can also use labs() to replace the axis and legend titles. 
+
 ## Exercise 19: In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
 
 ```{r echo=FALSE}
@@ -490,31 +512,88 @@ ggplot(mpg, aes(displ, hwy)) +
      )
 ```
 
-## Creating annotations - Labelling major components of a plot is often useful to communicate with audience. There are multiple ways of creating annotations but the first helpful tool is geom_text(). The "label" aesthetic of geom_text() makes it possible to add textual labels.
-## Exercise 20: In this example, we will label the total number of cars from each manufacturer in the mpg dataset and place those labels in a bar plot showing proportion of different classes for each manufacturer.
+## Saving your graph with ggsave()
 
-```{r fig.width=13}
-total_cars = as.data.frame(count(mpg, manufacturer=mpg$manufacturer, y=1))
+This is the syntax for the ggsave() function. The default dpi (dots per inch) value is 300. 
+
+```{r eval=FALSE}
+ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
+  scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"),
+  dpi = 300, limitsize = TRUE, ...)
+
+```
+
+## Exercise 20
+Assign your graph to a variable name
+
+```{r}
+
+my_graph <-ggplot(mpg, aes(displ, hwy)) +
+     geom_point(aes(color = class)) +
+     geom_smooth(se = FALSE) +
+     labs(
+        title = "Fuel efficiency generally decreases with engine size",
+         subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+         caption = "Data from fueleconomy.gov",
+         x = "Engine displacement (L)",
+         y = "Highway fuel economy (mpg)",
+         colour = "Car type"
+     )  
+  
+``` 
+
+## Exercise 21 
+Use a basic ggsave() function to save graph as a .PNG file
+
+```{r eval=FALSE}
+ggsave("graph.png", my_graph)
+```
+
+# Exercise 22: Re-save graph as a different size
+
+```{r eval=FALSE}
+ggsave("graph_resized.png", my_graph, width = 5, height = 4, units="in")
+```
+
+## Exercise 23: Save to publication-quality .tiff file
+
+```{r eval=FALSE}
+ggsave("graph.tiff", my_graph, width = 5, height = 4, units="in")
+```
+
+## Advanced chart labeling
+Labelling major components of a plot is often useful to communicate with audience. There are multiple ways of creating annotations but the first helpful tool is geom_text(). The "label" aesthetic of geom_text() makes it possible to add textual labels.
+
+## Example
+
+In this example, we will label the total number of cars from each manufacturer in the mpg dataset and place those labels in a bar plot showing proportion of different classes for each manufacturer.
+
+```{r fig.width=13, eval=FALSE}
+manufacturer <- mpg$manufacturer
+total_cars = as_data_frame(count(mpg, manufacturer, y=1))
 ggplot(mpg, aes(x=manufacturer)) + 
   geom_bar(aes(fill=class), position="fill") +
   scale_y_continuous(name="proportion") + 
   geom_text(data=total_cars, aes(x=manufacturer, y=y, label=n), size=4, vjust = -0.2)
 ```
 
-## Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types.
+## Exercise
+Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types.
 
-```{r echo=FALSE, fig.width=8}
-totals = as.data.frame(count(diamonds, clarity = diamonds$clarity, y=1))
+```{r echo=FALSE, eval=FALSE, fig.width=8}
+clarity <- diamonds$clarity
+
+totals = as_data_frame(count(diamonds, clarity, y=1))
 ggplot(diamonds, aes(x=clarity)) + 
   geom_bar(aes( fill=cut), position="fill") +
   scale_y_continuous(name="proportion") + 
   geom_text(data=totals, aes(x=clarity, y=y, label=n), size=4, vjust = -0.2)
 ```
 
-## Solution to 21
+## Solution
 
 ```{r eval=FALSE}
-totals = as.data.frame(count(diamonds, clarity = diamonds$clarity, y=1))
+totals = as_data_frame(count(diamonds, clarity = diamonds$clarity, y=1))
 ggplot(diamonds, aes(x=clarity)) + 
   geom_bar(aes( fill=cut), position="fill") +
   scale_y_continuous(name="proportion") + 

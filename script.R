@@ -13,6 +13,7 @@ head(mpg)
 # 3. Create a scatterplot with ggplot2, plotting engine displacement on the X-axis 
 # and highway mileage on the Y-axis. Run:
 ## Make sure to put the "+" sign at the end of the line, not at beginning of next line
+
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 
@@ -104,6 +105,7 @@ ggplot(data = diamonds) +
 
 # 17. Now create a bar chart with x = clarity. 
 
+
 # 18. Add labels to inform your audience about the graph 
 ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(color = class)) +
@@ -116,12 +118,50 @@ ggplot(mpg, aes(displ, hwy)) +
 
 # 19. In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
 
-# 20. Label the total number of cars from each manufacturer in the mpg dataset and place those labels in a bar plot showing proportion of different classes for each manufacturer..
+
+# 20. Save plot using ggsave(). Assign graph to a variable name.
+# Reference: http://ggplot2.tidyverse.org/reference/ggsave.html 
+# Run this code:
+
+my_graph <-ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  labs(
+    title = "Fuel efficiency generally decreases with engine size",
+    subtitle = "Two seaters (sports cars) are an exception because of their light weight",
+    caption = "Data from fueleconomy.gov",
+    x = "Engine displacement (L)",
+    y = "Highway fuel economy (mpg)",
+    colour = "Car type"
+  ) 
+
+my_graph #print the graph to see it
+
+# Exercise 21. Use a basic ggsave function to save graph as a .PNG file
+
+ggsave("images/graph.png", my_graph)
+
+# Exercise 22. Re-save graph as a different size in order to see it all. Units are in inches
+
+ggsave("images/graph_resized.png", my_graph, width = 5, height = 4, units = "in")
+
+# Exercise 23. Save to publication-quality .tiff file
+
+ggsave("images/graph.tiff", my_graph, width=5, height=5, units="in", dpi=600)
+
+# Advanced labeling example: this example shows how to label a stacked bar chart
+# Label the total number of cars from each manufacturer in the mpg dataset and place 
+# those labels in a bar plot showing proportion of different classes for each manufacturer..
+
 total_cars = as.data.frame(count(mpg, manufacturer=mpg$manufacturer, y=1))
+
 total_cars
+
 ggplot(mpg, aes(x=manufacturer)) + 
   geom_bar(aes(fill=class), position="fill") +
   scale_y_continuous(name="proportion") + 
   geom_text(data=total_cars, aes(x=manufacturer, y=y, label=n), size=4, vjust = -0.2)
 
-# 21. Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types.
+# Advanced exercise: Now create a similar bar plot using the diamonds dataset 
+# labeling the total number of diamonds for each type of clarity and showing the 
+# proportion of their cut types.
