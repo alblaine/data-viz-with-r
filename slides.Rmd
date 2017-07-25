@@ -147,14 +147,16 @@ p
 
 Essentially: graphs are like sentences you can construct, and they have a grammar. 
 
+![](images/grammar-example.png)
+
 ## The Grammar of Graphics
 
 According to the grammar of graphics, every chart should have at least one layer that contains the following:
 
 * **data** & **aesthetic mapping** of the data to variables
-* **stat** - a statistical transformation of the data -- sum, mean, etc.
+* **stat** - a statistical transformation of the data -- sum, mean, count, fit line, etc. (optional)
 * **geom** - geometric object (geom) -- point, line, bar, etc
-* **position adjustment** - stacking, jitter, etc.
+* **position adjustment** - stacking, jitter, etc. (optional)
 
 plus the following:
 
@@ -162,7 +164,7 @@ plus the following:
 * **coordinate system** 
 * **facet** (optional)
 
-**These components make up a graph.**
+![](images/grammar-example.png)
 
 ## Tidy Data
 
@@ -170,6 +172,17 @@ plus the following:
 
 Tidy data has the following characteristics: "each variable is a column, each observation is a row, and each type of observational unit is a table."
 
+![](images/tidy-1.png)
+
+credit: Hadley Wickham
+
+## Tidy data cont'd
+
+![](images/tidy-8.png)  
+
+![]images/tidy-9.png)
+
+credit: Hadley Wickham
 
 ## The Tidyverse
 

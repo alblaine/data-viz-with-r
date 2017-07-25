@@ -163,12 +163,25 @@ plus the following:
 * **facet** (optional)
 **These components make up a graph.**
 
+![](images/grammar-example.png)
+
 ## Tidy Data
 
 **Tidy data** is a way of structuring a data set to make it easier to work, proposed by Hadley Wickham (2014). 
 
 Tidy data has the following characteristics: "each variable is a column, each observation is a row, and each type of observational unit is a table."
 
+![](images/tidy-1.png)
+
+credit: Hadley Wickham
+
+## Tidy data cont'd
+
+![](images/tidy-8.png)  
+
+![]images/tidy-9.png)
+
+credit: Hadley Wickham
 
 ## The Tidyverse
 
