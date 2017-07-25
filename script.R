@@ -114,5 +114,14 @@ ggplot(mpg, aes(displ, hwy)) +
     caption = "Data from fueleconomy.gov"
   )
 
-## Exercise 19: In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
+# 19. In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and colour = "Car type" in the lab
 
+# 20. Label the total number of cars from each manufacturer in the mpg dataset and place those labels in a bar plot showing proportion of different classes for each manufacturer..
+total_cars = as.data.frame(count(mpg, manufacturer=mpg$manufacturer, y=1))
+total_cars
+ggplot(mpg, aes(x=manufacturer)) + 
+  geom_bar(aes(fill=class), position="fill") +
+  scale_y_continuous(name="proportion") + 
+  geom_text(data=total_cars, aes(x=manufacturer, y=y, label=n), size=4, vjust = -0.2)
+
+# 21. Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types.
