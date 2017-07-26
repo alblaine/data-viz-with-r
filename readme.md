@@ -60,7 +60,7 @@ htmlwidgets:
 * shiny
 
 
-## Core R functions for plotting
+## Base R functions for plotting
 
 You can create graphs in R without installing a package, but packages will allow you to create better visualizations that are any of the following:
 
@@ -194,6 +194,13 @@ plus the following:
 **These components make up a graph.**
 
 ![](images/grammar-example.png)
+
+
+## Grammar of Graphics
+
+![](images/grammar.png)
+
+Credit: RStudio, Inc. • CC BY RStudio • info@rstudio.com • 844-448-1212 • rstudio.com
 
 ## Tidy Data
 
