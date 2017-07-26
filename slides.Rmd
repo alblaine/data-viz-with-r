@@ -91,12 +91,6 @@ You can create graphs in R without installing a package, but packages will allow
 * publication-quality
 * interactive
 
-```{r}
-
-attach(mtcars)
-hist(mpg)
-
-```
 
 ## Example with R package ggplot2
 
@@ -117,7 +111,7 @@ ggplot2 is the most popular visualization package for R. It's the best all-purpo
 ## highcharter
 Highcharter is an R package known as an htmlwidget, which allows you to use popular javascript packages for visualization and create interactive web charts. Highcharter is the R interface to the popular highchartsJS, a charting library in javascript. It's free to use highcharter unless you are using it for a commercial or government purpose.
 
-```{r}
+```{r fig.width=6, fig.height=4}
 data(citytemp)
 
 hc <- highchart() %>% 
@@ -135,7 +129,7 @@ hc
 
 Leaflet is popular among web developers for creating interactive web maps. It's an htmlwidget for R based on LeafletJS.
 
-```{r}
+```{r fig.width=6, fig.height=4}
 
 m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZoom = 15, maxZoom = 15)) %>%
   addTiles() %>%  # Add default OpenStreetMap map tiles
@@ -150,7 +144,7 @@ m  # Print the map
 
 Plotly is somewhat new and is making inroads among data scientists for making interactive visualizations. 
 
-```{r}
+```{r fig.width=6, fig.height=4}
 
 p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
 p
@@ -162,7 +156,7 @@ p
 
 rbokeh allows you to create elegant-looking interactive graphs
 
-```{r}
+```{r fig.width=6, fig.height=4}
 
 h <- figure(width = 600, height = 400) %>%
   ly_hist(eruptions, data = faithful, breaks = 40, freq = FALSE) %>%
@@ -195,23 +189,20 @@ shiny is a popular R package for creating web applications.
 * web applications: **shiny**
   
 ## ggplot2: the most important package to learn first
-  
 **ggplot2** was created on the principles of the **Layered Grammar of Graphics** (2010), by Hadley Wickham and based of off work from Wilkinson, Anand, & Grossman (2005) and Jaques Bertin (1983). 
 
 Essentially: graphs are like sentences you can construct, and they have a grammar. The grammar of graphics consists of the following: 
   
-  At least one layer: 
-  
-* **data** & **aesthetic mapping** of the data to variables
-* **stat** - a statistical transformation of the data -- sum, mean, etc.
-* **geom** - geometric object (geom) -- point, line, bar, etc
-* **position adjustment** - stacking, jitter, etc.
+At least one layer: 
+**data** & **aesthetic mapping** of the data to variables  
+**stat** - a statistical transformation of the data -- sum, mean, etc.  
+**geom** - geometric object (geom) -- point, line, bar, etc  
+**position adjustment** - stacking, jitter, etc.  
 
 plus the following:
-  
-* **scale**   
-* **coordinate system** 
-* **facet** (optional)
+**scale**     
+**coordinate system**   
+**facet** (optional)  
 
 **These components make up a graph.**
   
@@ -297,7 +288,7 @@ The graph below uses ggplot2 to look for correlation between a car's engine disp
 
 **Run the following code in your script file**
   
-```{r}
+```{r mpg}
 
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 
