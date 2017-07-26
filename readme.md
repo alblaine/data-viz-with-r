@@ -106,6 +106,7 @@ m <- leaflet(options = leafletOptions(zoomControl = FALSE, dragging=FALSE, minZo
     popup="Hello World!")
 m  # Print the map
 ```
+
 ![](images/leaflet.png)
 
 ## plotly
@@ -154,7 +155,7 @@ shiny is a popular R package for creating web applications.
 * network graphs: **ggnet, diagrammeR, visNetwork**
 * web applications: **shiny**
 
-## ggplot2: the most important package to learn first
+## ggplot2: (often) the most important package to learn first
 
 **ggplot2** was created on the principles of the **Layered Grammar of Graphics** (2010), by Hadley Wickham and based of off work from Wilkinson, Anand, & Grossman (2005) and Jaques Bertin (1983). 
 
@@ -205,21 +206,24 @@ The tidyverse is a set of packages for working with data that include packages f
 
 ![](images/tidyverse-logo.png)
 
-## ggsave()
+
+## Saving your graph: ggsave()
 
 **ggsave()** is a function within ggplot2 to save your graphs as files to your computer.  
 
 Using ggsave, you can save charts to the following file formats:   
 eps, ps, tex (pictex), pdf, jpeg, tiff, png, bmp, svg or wmf (windows only)
 
-## Open script.R file
 
-Download the following file: **[script.R](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU)**
+## Activity: Open script.R file
+
+Download the following file:   **[script.R](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU)**  
 Click the blue download button  
 Open RStudio. 
 File > Open File...   
 Select the **script.R** file that you just downloaded  (probably in your Downloads folder)
 Click Open  
+
 
 ## Get to know the data
 Let's see an example of a simple graph created with ggplot. We are going to use the `mpg` data set about different cars and their properties. 
@@ -231,7 +235,10 @@ Let's see an example of a simple graph created with ggplot. We are going to use 
 ?mpg 
 ```
 
-#### Exercise #2: Run `head(mpg)` to see the first few rows of the data.
+
+## Exercise #2: Look at your data
+
+Run `head(mpg)` to see the first few rows of the data.
 
 
 ```r
@@ -250,6 +257,7 @@ head(mpg)
 ## 6         audi    a4   2.8  1999     6 manual(m5)     f    18    26     p
 ## # ... with 1 more variables: class <chr>
 ```
+
 
 ## Exercise #3: ggplot syntax
 
@@ -272,15 +280,19 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 
 
 ## Exercise #4: Practice
+
 Make a scatterplot with `cyl` mapped to the x-axis and `hwy` mapped to the y-axis.
 
 ![](readme_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
+
 ## Solution to #4
+
 
 ```r
 ggplot(data= mpg) + geom_point(mapping = aes(x=cyl, y=hwy))
 ```
+
 
 ## Exercise #5: Mapping a variable to color
 
@@ -293,16 +305,21 @@ ggplot(data = mpg) +
 
 ![](readme_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
+
 ## Exercise #6: Make the same scatterplot as the previous example, but map drv to color.
+
 ![](readme_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
+
 ## Solution to #6
+
 The type of drive system the car has (4-wheel, rear-wheel, and front-wheel) is mapped to color.
 
 ```r
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = drv))
 ```
+
 
 ## Exercise #7: Aesthetic parameters
 
@@ -315,14 +332,17 @@ Variables can be mapped to the following aesthetic parameters. If you are publis
 
 **Substitute another aesthetic in place of `color`. Run the code:**
 
+
 ```r
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, shape = drv))
 ```
 
+
 ## Exercise #8: Faceting
 
 Facets are a way to create multiple smaller charts, or subplots, based on a variable. Run this code to see what faceting does:
+
 
 ```r
 ggplot(data = mpg) + 
@@ -336,6 +356,7 @@ ggplot(data = mpg) +
 
 **Substitute `class` for another variable in the dataset. Ex: `trans`, `drive`, or `cyl`**
 
+
 ```r
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
@@ -346,6 +367,7 @@ ggplot(data = mpg) +
 
 Facet grids allow for an extra dimension of faceting. Run this code in your script to see what facet_grid() does:
 
+
 ```r
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_grid(class ~ cyl)
@@ -355,12 +377,15 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) +
 
 Compare above result with the code below. What do the empty cells in the above graph mean?
 
+
 ```r
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = class, y = cyl))
+
+    geom_point(mapping = aes(x = class, y = cyl))
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+
 
 ## Exercise 11: Apply what you've learned!
 
@@ -394,6 +419,7 @@ ggplot(data = diamonds) +
 
 ![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
+
 ## Exercise 12: Adding multiple layers to a graph
 
 So far we have just worked with one chart layer. But it's possible to add more layers to charts in ggplot2, and style those layers individually if you want to. Here's an example using `geom_smooth()`, which fits a model to the data. Notice that the `color` variable is only applied to the scatter points, and not the line. 
@@ -409,6 +435,7 @@ ggplot(data = diamonds) +
 
 
 ## Exercise 13: Coding for efficiency 
+
 To reduce typing, put the aesthetics that are shared by all layers (global) in the ggplot() function. Put unique aesthetics in the geom() functions that are specific to that (local) layer only. Run this code to see what happens:
 
 
@@ -419,6 +446,7 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price)) +
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+
 
 ## Exercise 14: Practice putting aesthetics in ggplot() function
 Now use the short hand method to make the following code more efficient. Type your answer in the script:
@@ -431,6 +459,7 @@ ggplot(data = diamonds) +
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+
 
 ## Solution to #14
 
@@ -447,6 +476,7 @@ It's also possible to write it even more efficiently:
 ggplot(diamonds, aes(carat, price)) + geom_point(aes(color=clarity)) + geom_smooth()
 ```
 
+
 ## Exercise 15: Position adjustments
 
 The previous chart has some issues with data points overlapping, and also too many spaghetti lines. We can use `alpha`, which is an aesthetic, and `position` to help reduce some of that overlap. Remember that `position` is one of the elements in the layered grammar of graphics. 
@@ -461,7 +491,9 @@ ggplot(data =diamonds, mapping = aes(carat, price)) + geom_point(mapping = aes(c
 
 ![](readme_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
 
+
 ## Other chart types in ggplot2
+
 To make a scatter plot, we used the `geom_point()` function. You can use different `geom` functions to make other chart types. Here are just a few examples of the many `geom` functions:
 
 * `geom_abline()`
@@ -471,6 +503,7 @@ To make a scatter plot, we used the `geom_point()` function. You can use differe
 
 Each function can take certain parameters. To learn more about a function, you can type `?+name of function`, for example, `?geom_bar`
 
+
 ## Bar Chart Example
 
 Use geom_bar() function to create a bar chart. Without a specified y variable, bar charts in ggplot calculate `count`, a new value.
@@ -478,12 +511,14 @@ Use geom_bar() function to create a bar chart. Without a specified y variable, b
 
 #### Exercise 16. Run this example of a bar chart: 
 
+
 ```r
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut))
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+
 
 ## Exercise 17: Bar Chart Practice
 
@@ -506,6 +541,7 @@ ggplot(data = diamonds) +
 ```
 
 ![](readme_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+
 
 ## Statistical transformations
 
@@ -543,11 +579,13 @@ ggplot(mpg, aes(displ, hwy)) +
 
 **You can also use labs() to replace the axis and legend titles.**
 
+
 ## Exercise 19: Add x and y axis labels
 
 In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and color = "Car type" in the lab
 
 ![](readme_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
+
 
 ## Solution to 19
 
@@ -566,6 +604,7 @@ ggplot(mpg, aes(displ, hwy)) +
      )
 ```
 
+
 ## Saving your graph with ggsave()
 
 This is the syntax for the ggsave() function. The default dpi (dots per inch) value is 300. 
@@ -573,12 +612,14 @@ This is the syntax for the ggsave() function. The default dpi (dots per inch) va
 
 ```r
 ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
-  scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"),
+         scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"),
   dpi = 300, limitsize = TRUE, ...)
 ```
 
-## Exercise 20
-Assign your graph to a variable name
+
+## Exercise 20: Save graph as a variable
+
+Assign your graph to a variable name, which will make it easier to save. Here the graph is saved as the variable `my_graph`
 
 
 ```r
@@ -595,7 +636,9 @@ my_graph <-ggplot(mpg, aes(displ, hwy)) +
      )  
 ```
 
+
 ## Exercise 21 
+
 Use a basic ggsave() function to save graph as a .PNG file
 
 
@@ -603,12 +646,14 @@ Use a basic ggsave() function to save graph as a .PNG file
 ggsave("graph.png", my_graph)
 ```
 
-# Exercise 22: Re-save graph as a different size
+
+## Exercise 22: Re-save graph as a different size
 
 
 ```r
 ggsave("graph_resized.png", my_graph, width = 5, height = 4, units="in")
 ```
+
 
 ## Exercise 23: Save to publication-quality .tiff file
 
@@ -617,8 +662,11 @@ ggsave("graph_resized.png", my_graph, width = 5, height = 4, units="in")
 ggsave("graph.tiff", my_graph, width = 5, height = 4, units="in")
 ```
 
+
 ## Advanced chart labeling
+
 Labelling major components of a plot is often useful to communicate with audience. There are multiple ways of creating annotations but the first helpful tool is geom_text(). The "label" aesthetic of geom_text() makes it possible to add textual labels.
+
 
 ## Example
 
@@ -634,12 +682,13 @@ ggplot(mpg, aes(x=manufacturer)) +
   geom_text(data=total_cars, aes(x=manufacturer, y=y, label=n), size=4, vjust = -0.2)
 ```
 
+
 ## Advanced labeling exercise
 
 Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types. Here is the code - try filling in the blanks!
 
-clarity <- diamonds$clarity
-totals = as_data_frame(count(diamonds, ______ , y=1))
+clarity <- diamonds$clarity  
+totals = as_data_frame(count(diamonds, ______ , y=1))  
 
 ggplot(diamonds, aes(x=clarity)) + 
   geom_bar(aes( fill=cut), position="fill") +
