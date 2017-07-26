@@ -207,12 +207,16 @@ credit: Hadley Wickham
 
 ## Tidy data cont'd
 
+Collapse columns of multiple years into one variable: year 
+
 ![](images/tidy-9.png)  
 
 credit: Hadley Wickham
 
 
-## Tiday data cont'd
+## Tidy data cont'd
+
+Unpack columns of more than one variable into distinct columns. Remember: only one column per variable!
 
 ![](images/tidy-8.png)
 
