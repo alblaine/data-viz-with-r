@@ -193,13 +193,13 @@ shiny is a popular R package for creating web applications.
 
 Essentially: graphs are like sentences you can construct, and they have a grammar. The grammar of graphics consists of the following: 
   
-At least one layer: 
+At least one layer:  
 **data** & **aesthetic mapping** of the data to variables  
 **stat** - a statistical transformation of the data -- sum, mean, etc.  
 **geom** - geometric object (geom) -- point, line, bar, etc  
 **position adjustment** - stacking, jitter, etc.  
 
-plus the following:
+plus the following:  
 **scale**     
 **coordinate system**   
 **facet** (optional)  
