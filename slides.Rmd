@@ -19,6 +19,11 @@ library("rbokeh")
 
 ```
 
+## Workshop materials
+
+* **Guide**: [go.ncsu.edu/dvr](https://go.ncsu.edu/dvr)
+* **Script**: [go.ncsu.edu/dvrs](https://go.ncsu.edu/dvrs)
+
 ## Workshop goals 
 
 * learn about various packages for making data visualizations in R 
@@ -235,13 +240,14 @@ Click Open
 ## Get to know the data
 Let's see an example of a simple graph created with ggplot. We are going to use the `mpg` data set about different cars and their properties. 
 
-#### Exercise #1: In your script file, run `?mpg` to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
+#### Exercise #1: 
+In your script file, run `?mpg` to learn more about this dataset. To run the code, highlight it and then click Run. (shortcut keys: Mac: command + Enter, Windows: CTRL + Enter)
 
 ```{r}
 ?mpg 
 ```
 
-#### Exercise #2
+## Exercise #2: Look at the data
 
 Run `head(mpg)` to see the first few rows of the data.
 
@@ -628,7 +634,7 @@ geom_text(data=totals, aes(x=clarity, y=y, label=n), size=4, vjust = -0.2)
 ## Solution
 
 ```{r eval=FALSE}
-clarity <- diamonds$clarity
+clarity <- diamonds$clarity  
 totals = as_data_frame(count(diamonds, clarity, y=1))
 
 ggplot(diamonds, aes(x=clarity)) + 
