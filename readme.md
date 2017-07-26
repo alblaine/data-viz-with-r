@@ -17,7 +17,7 @@ Alison Blaine, Nushrat Khan & Heidi Tebbe
 
 * [installation of R (version 3.3.2 or newer)](http://archive.linux.duke.edu/cran/)
 * [RStudio](https://www.rstudio.com/products/rstudio/download/) - select the free version
-* [this script](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU) -- download it and open it in RStudio
+* [this script](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU) - download it and open it in RStudio
 
 ## What is R?
 
@@ -59,14 +59,32 @@ htmlwidgets:
 * rbokeh 
 * shiny
 
+
 ## Core R functions for plotting
 
 You can create graphs in R without installing a package, but packages will allow you to create better visualizations that are any of the following:
 
 * attractive
 * publication-quality
-* interactive
+* interactive  
 
+This is an example of a plot created with the base R histogram function. The data is a histogram of the miles-per-gallon (mpg) measurements of cars in a dataset called mtcars.
+
+```r
+hist(mtcars$mpg)
+```
+
+![](readme_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+
+## Example with R package ggplot2
+
+
+```r
+ggplot(mtcars, aes(x=mpg)) + geom_histogram(binwidth=1, color="black", fill="white")
+```
+
+![](readme_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ## ggplot2
 
@@ -276,14 +294,14 @@ The graph below uses ggplot2 to look for correlation between a car's engine disp
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 
 ## Exercise #4: Practice
 
 Make a scatterplot with `cyl` mapped to the x-axis and `hwy` mapped to the y-axis.
 
-![](readme_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 
 ## Solution to #4
@@ -303,12 +321,12 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 
 ## Exercise #6: Make the same scatterplot as the previous example, but map drv to color.
 
-![](readme_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 
 ## Solution to #6
@@ -350,7 +368,7 @@ ggplot(data = mpg) +
   facet_wrap(~ class, nrow = 2)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
 
 ## Exercise #9: Practice Faceting 
 
@@ -373,7 +391,7 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) +
   facet_grid(class ~ cyl)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 Compare above result with the code below. What do the empty cells in the above graph mean?
 
@@ -384,7 +402,7 @@ ggplot(data = mpg) +
     geom_point(mapping = aes(x = class, y = cyl))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 
 ## Exercise 11: Apply what you've learned!
@@ -417,7 +435,7 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color=cut)) + facet_wrap(~cut, nrow=2)
 ```
 
-![](readme_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 
 ## Exercise 12: Adding multiple layers to a graph
@@ -431,7 +449,7 @@ ggplot(data = diamonds) +
   geom_smooth(mapping = aes(x = carat, y = price))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
 
 
 ## Exercise 13: Coding for efficiency 
@@ -445,7 +463,7 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price)) +
   geom_smooth()
 ```
 
-![](readme_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 
 ## Exercise 14: Practice putting aesthetics in ggplot() function
@@ -458,7 +476,7 @@ ggplot(data = diamonds) +
   geom_smooth(mapping = aes(x = carat, y = price))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 
 ## Solution to #14
@@ -489,7 +507,7 @@ The previous chart has some issues with data points overlapping, and also too ma
 ggplot(data =diamonds, mapping = aes(carat, price)) + geom_point(mapping = aes(color=clarity, alpha=1/5), position="jitter") + geom_smooth()
 ```
 
-![](readme_files/figure-html/unnamed-chunk-26-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
 
 
 ## Other chart types in ggplot2
@@ -517,7 +535,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
 
 
 ## Exercise 17: Bar Chart Practice
@@ -540,7 +558,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = clarity))
 ```
 
-![](readme_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
 
 
 ## Statistical transformations
@@ -575,7 +593,7 @@ ggplot(mpg, aes(displ, hwy)) +
   )
 ```
 
-![](readme_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
 
 **You can also use labs() to replace the axis and legend titles.**
 
@@ -584,7 +602,7 @@ ggplot(mpg, aes(displ, hwy)) +
 
 In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and color = "Car type" in the lab
 
-![](readme_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
+![](readme_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
 
 
 ## Solution to 19

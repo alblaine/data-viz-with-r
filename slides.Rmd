@@ -91,6 +91,11 @@ You can create graphs in R without installing a package, but packages will allow
 * publication-quality
 * interactive
 
+This is an example of a plot created with the base R histogram function. The data is a histogram of the miles-per-gallon (mpg) measurements of cars in a dataset called mtcars.
+```{r}
+hist(mtcars$mpg)
+
+```
 
 ## Example with R package ggplot2
 
@@ -205,7 +210,7 @@ plus the following:
 **facet** (optional)  
 
 **These components make up a graph.**
-  
+
   
 ![](images/grammar-example.png)
 
@@ -222,11 +227,15 @@ credit: Hadley Wickham
 
 ## Tidy data cont'd
 
+Collapse columns of multiple years into one variable: year
+
 ![](images/tidy-9.png)  
 
 credit: Hadley Wickham
 
 ## Tidy data cont'd
+
+Unpack columns of more than one variable into distinct columns. Remember: only one column per variable!
 
 ![](images/tidy-8.png)
 
@@ -555,6 +564,21 @@ caption = "Data from fueleconomy.gov"
 
 In the previous example, add x = "Engine displacement (L)", y = "Highway fuel economy (mpg)", and color = "Car type" in the lab
 
+Use this to help you: 
+
+ggplot(mpg, aes(displ, hwy)) +  
+geom_point(aes(color = class)) +  
+geom_smooth(se = FALSE) +  
+labs(  
+title = "Fuel efficiency generally decreases with engine size",  
+subtitle = "Two seaters (sports cars) are an exception because of their light weight",  
+caption = "Data from fueleconomy.gov",  
+x = "_______________",  
+y = "_______________",  
+color = "__________"  
+)
+
+
 ```{r echo=FALSE}
 ggplot(mpg, aes(displ, hwy)) +
 geom_point(aes(color = class)) +
@@ -663,7 +687,8 @@ geom_text(data=total_cars, aes(x=manufacturer, y=y, label=n), size=4, vjust = -0
 
 Now create a similar bar plot using the diamonds dataset labeling the total number of diamonds for each type of clarity and showing the proportion of their cut types. Here is the code - try filling in the blanks!
 
-clarity <- diamonds$clarity
+clarity <- diamonds$clarity 
+
 totals = as_data_frame(count(diamonds, ______ , y=1))
 
 ggplot(diamonds, aes(x=clarity)) + 
@@ -675,6 +700,7 @@ geom_text(data=totals, aes(x= ______ , y=y, label=n), size=4, vjust = -0.2)
 ```{r echo=FALSE, eval=FALSE, fig.width=8}
 
 clarity <- diamonds$clarity
+
 totals = as_data_frame(count(diamonds, clarity, y=1))
 
 ggplot(diamonds, aes(x=clarity)) + 
