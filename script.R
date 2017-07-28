@@ -21,20 +21,22 @@ ggplot(data = mpg) +
 # Type the code in the lines below. Run the code to test it!
 
 
+
 # 5. Make a scatterplot of disp=x and hwy=y with class mapped to the color aesthetic. Run:
 
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  geom_point(mapping = aes(x = displ, y = hwy, color = class)) + theme_classic()
 
 # 6. Make the same scatterplot as the previous example, but map drv to color.
 # Type the code in the lines below. Then run the code to test it.
+
 
 
 # 7. Substitute another aesthetic in place of color (size, shape, or alpha). 
 #Run the code:
 
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy, shape = drv))
+  geom_point(mapping = aes(x = displ, y = hwy, size = drv))
 
 # 8. Facet_wrap() creates subplots. Run this code to see what faceting does:
 
@@ -139,21 +141,23 @@ my_graph #print the graph to see it
 
 # Exercise 21. Use a basic ggsave function to save graph as a .PNG file
 
-ggsave("images/graph.png", my_graph)
+ggsave("graph.png", my_graph) # this will save the image file to your current working directory. If you want to save to a different place, add path information before the file name. Ex: "~/Documents/Project_Folder/graph.png"
 
 # Exercise 22. Re-save graph as a different size in order to see it all. Units are in inches
 
-ggsave("images/graph_resized.png", my_graph, width = 5, height = 4, units = "in")
+ggsave("graph_resized.png", my_graph, width = 5, height = 5, units = "in")
 
 # Exercise 23. Save to publication-quality .tiff file
 
-ggsave("images/graph.tiff", my_graph, width=5, height=5, units="in", dpi=600)
+ggsave("graph.tiff", my_graph, width=5, height=5, units="in", dpi=600)   
 
 # Advanced labeling example: this example shows how to label a stacked bar chart
 # Label the total number of cars from each manufacturer in the mpg dataset and place 
 # those labels in a bar plot showing proportion of different classes for each manufacturer..
 
-total_cars = as.data.frame(count(mpg, manufacturer=mpg$manufacturer, y=1))
+manufacturer <- mpg$manufacturer  # creates a variable "manufacturer" that is the manufacturer column in the data frame
+
+total_cars = as.data.frame(count(mpg, manufacturer, y=1))  # counts the total cars per manufacturer. Also creates a y column with value 1 for each row.
 
 total_cars
 
