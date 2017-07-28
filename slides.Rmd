@@ -38,7 +38,7 @@ By Censusdata at en.wikipedia, CC BY 3.0, [source](https://commons.wikimedia.org
 
 * [installation of R (version 3.3.2 or newer)](http://archive.linux.duke.edu/cran/)
 * [RStudio](https://www.rstudio.com/products/rstudio/download/) - select the free version
-* [this script](https://drive.google.com/open?id=0Bz7G_jKybSBsUXlzTGZoVlpYQlU) -download it and open in RStudio
+* [this script](https://drive.google.com/open?id=0Bz7G_jKybSBsVE1TbnNWLUpXejg) -download it and open in RStudio
 
 ![](images/Rlogo.png)
 
